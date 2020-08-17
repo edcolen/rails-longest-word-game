@@ -3,7 +3,11 @@ require 'json'
 
 class GamesController < ApplicationController
   def generate_grid(grid_size)
-    grid_size.times.map { ('A'..'Z').to_a.sample }
+    vowels = %w[A E I O U Y]
+    general_letters = grid_size.times.map { ('A'..'Z').to_a.sample }
+    general_letters[rand grid_size] = vowels.sample
+    general_letters[rand grid_size] = vowels.sample
+    general_letters
   end
 
   def run_game(attempt, grid, start_time, end_time)
@@ -40,7 +44,7 @@ class GamesController < ApplicationController
   end
 
   def new
-    @letters = generate_grid(9)
+    @letters = generate_grid(10)
     @start_time = Time.now
   end
 
