@@ -1,0 +1,25 @@
+<div class="container align-items-center w-100 pt-5">
+    <h1>New Game</h1>
+    <div class="letter-grid">
+        <% @letters.each do |letter| %>
+            <p class="letter">
+                <%= letter %>
+            </p>
+            <% end %>
+    </div>
+</div>
+<div class="container align-items-center w-100 pt-5">
+    <p class="py-3 text-center">What is the longest word you can find?</p>
+    <form action="/score" method="POST">
+        <div class="form-row align-items-center justify-content-center mx-auto">
+            <div class="input-group-prepend">
+                <input type="text" class="form-control" name="play" /><button type="submit" class="btn btn-primary">
+					play
+				</button>
+            </div>
+        </div>
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            <%= hidden_field_tag :letters, @letters %>
+            <%= hidden_field_tag :start_time, @start_time %>
+    </form>
+</div>

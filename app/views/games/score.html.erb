@@ -1,0 +1,22 @@
+<div class="container align-items-center w-100 pt-5">
+    <h1>New Game</h1>
+    <div class="letter-grid">
+        <% @letters.each do |letter| %>
+            <p class="letter">
+                <%= letter %>
+            </p>
+            <% end %>
+    </div>
+</div>
+<div class="container align-items-center w-100 pt-5">
+    <h2 class="py-3 text-center">Here's your results:</h2> 
+    <div>
+    <p>Your word: <%= @attempt %></p>
+    <p>Your time: <%= @results[:time].round(2) %> seconds</p>
+    <p>Your score: <%= @results[:score].round(2) %></p>
+    <p><%= @results[:message] %></p>
+    </div>
+    <div>
+    <%= link_to 'Play again', games_new_path %>
+    </div>
+</div>
